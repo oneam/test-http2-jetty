@@ -13,6 +13,7 @@ public class TestClient {
 
     public static void main(String[] args) throws Exception {
         boolean http2 = Boolean.parseBoolean(System.getProperty("http2", "false"));
+        String targetUri = System.getProperty("targetUri", "http://localhost:8080");
 
         HttpClient client;
         if (http2) {
@@ -37,7 +38,7 @@ public class TestClient {
             throttle.acquire();
             long start = System.nanoTime();
             metrics.incrementActiveRequests();
-            client.newRequest("http://localhost:8080/")
+            client.newRequest(targetUri)
                     .send(new BufferingResponseListener() {
 
                         @Override
