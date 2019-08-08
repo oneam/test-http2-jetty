@@ -32,3 +32,8 @@ task(client, dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     systemProperties System.getProperties()
 }
+
+// To update, run: ./gradlew wrapper --gradle-version X.Y.Z
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
